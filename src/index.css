@@ -1,23 +1,28 @@
 @import "tailwindcss";
+@import "react-multi-carousel/lib/styles.css";
 
 @theme {
   /* === Brand Colors === */
-  --color-primary-500: #2563eb; /* Blue - Trust & Clarity */
-  --color-secondary-500: #f97316; /* Orange - Energy & CTA */
-  --color-highlight: #eab308; /* Yellow - Promotions */
+  --color-primary-500: #2f855a; /* Deep Green - Nature & Quality */
+  --color-secondary-500: #c05621; /* Terracotta - Warmth & Action */
+  --color-highlight: #f6e05e; /* Soft Yellow - Attention */
 
   /* === Status Colors === */
-  --color-success-500: #10b981; /* Green */
-  --color-danger-500: #ef4444; /* Red */
+  --color-success-500: #38a169; /* Green */
+  --color-danger-500: #e53e3e; /* Red */
 
   /* === Text Colors === */
-  --color-text-900: #111827; /* Primary text */
-  --color-text-600: #4b5563; /* Secondary text */
+  --color-text-900: #2d3748; /* Dark Charcoal */
+  --color-text-600: #718096; /* Medium Gray */
 
   /* === Background Colors === */
-  --color-bg-light: #f9fafb;
-  --color-bg-dark: #0f172a;
+  --color-bg-light: #f7fafc; /* Very Light Gray/Off-white */
+  --color-bg-dark: #1a202c; /* Charcoal */
 
   /* === Utility Colors === */
-  --color-border: #e5e7eb;
+  --color-border: #e2e8f0;
+}
+
+.container {
+  @apply px-[10px] sm:px-[20px] md:px-[3%];
 }
