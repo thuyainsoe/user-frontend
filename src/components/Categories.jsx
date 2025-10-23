@@ -79,12 +79,12 @@ const Categories = () => {
     <div className="min-w-full bg-white py-2">
       <div className="container min-w-full">
         {/* Section Title - matching design system */}
-        <div className="text-center mb-4">
-          <h2 className="text-base md:text-xl font-medium text-text-900 mb-3">
+        <div className="text-left mb-4">
+          <h2 className="text-base md:text-xl font-medium text-text-900 mb-2">
             Shop by Category
           </h2>
-          <div className="w-24 h-1 bg-primary-500 mx-auto rounded-full"></div>
-          <p className="text-text-600 mt-4 text-sm md:text-base">
+          <div className="w-24 h-1 bg-primary-500 mr-auto rounded-full"></div>
+          <p className="text-text-600 mt-2 text-sm md:text-base">
             Discover our wide range of products across different categories
           </p>
         </div>

@@ -19,14 +19,11 @@ import {
   FaChevronDown,
   FaEnvelope,
 } from "react-icons/fa";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import Dropdown from "./Dropdown";
 
 const Header = () => {
   const navigate = useNavigate();
   const [showSidebar, setShowSidebar] = useState(false);
-  // FIX: Created separate states for each category dropdown to prevent them from opening simultaneously.
-  const [showNavCategoryDropdown, setShowNavCategoryDropdown] = useState(false);
-  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -73,7 +70,6 @@ const Header = () => {
 
   const handleLanguageSelect = (lang) => {
     setSelectedLanguage(lang);
-    setShowLanguageDropdown(false);
   };
 
   return (
@@ -135,36 +131,14 @@ const Header = () => {
               </a>
             </div>
 
-            <div className="relative">
-              <button
-                onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-                className="flex items-center gap-2 hover:text-highlight transition-colors"
-              >
-                <span>{selectedLanguage}</span>
-                <MdOutlineKeyboardArrowDown
-                  className={`transition-transform ${
-                    showLanguageDropdown ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {showLanguageDropdown && (
-                <div className="absolute right-0 top-full mt-2 bg-white text-text-900 shadow-lg rounded-md py-1 w-32 z-50">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => handleLanguageSelect(lang)}
-                      className={`w-full text-left px-4 py-1.5 hover:bg-bg-light transition-colors text-sm ${
-                        selectedLanguage === lang
-                          ? "bg-bg-light text-primary-500 font-medium"
-                          : ""
-                      }`}
-                    >
-                      {lang}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+            <Dropdown
+              trigger={selectedLanguage}
+              items={languages}
+              onSelect={handleLanguageSelect}
+              position="right"
+              buttonClassName="hover:text-highlight transition-colors text-sm"
+              menuClassName="w-32"
+            />
 
             <div className="flex items-center gap-2">
               {isLoggedIn ? (
@@ -293,37 +267,22 @@ const Header = () => {
       <div className="hidden md:block bg-bg-light border-b border-border container min-w-full">
         <div className="mx-auto">
           <div className="flex items-center justify-between h-[50px]">
-            <div className="relative">
-              <button
-                onClick={() =>
-                  setShowNavCategoryDropdown(!showNavCategoryDropdown)
-                }
-                className="flex items-center gap-2 px-3 py-1.5 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition-colors text-sm"
-              >
-                <FaList className="text-base" />
-                <span className="font-medium">All Categories</span>
-                <MdOutlineKeyboardArrowDown
-                  className={`text-lg transition-transform ${
-                    showNavCategoryDropdown ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {showNavCategoryDropdown && (
-                <div className="absolute left-0 top-full mt-1 bg-white shadow-md rounded-md py-1 w-44 z-50 border border-border">
-                  {categories.slice(1).map((category) => (
-                    <Link
-                      key={category}
-                      to={`/products?category=${category}`}
-                      onClick={() => setShowNavCategoryDropdown(false)}
-                      className="block px-3 py-1.5 hover:bg-gray-100 text-sm text-gray-800 hover:text-primary-500 transition-colors"
-                    >
-                      {category}
-                    </Link>
-                  ))}
-                </div>
+            <Dropdown
+              trigger="All Categories"
+              items={categories.slice(1)}
+              onSelect={(category) => navigate(`/products?category=${category}`)}
+              icon={<FaList className="text-base" />}
+              buttonClassName="px-3 py-1.5 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition-colors text-sm font-medium"
+              menuClassName="w-44"
+              renderItem={(category) => (
+                <Link
+                  to={`/products?category=${category}`}
+                  className="block px-3 py-1.5 hover:bg-bg-light text-sm text-text-900 hover:text-primary-500 transition-colors"
+                >
+                  {category}
+                </Link>
               )}
-            </div>
+            />
 
             <nav className="flex items-center gap-6">
               {navLinks.map(({ to, label }) => (
