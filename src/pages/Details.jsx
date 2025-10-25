@@ -283,7 +283,7 @@ const Details = () => {
       <Header />
 
       {/* Banner Section */}
-      <section className='bg-[url("/images/banner/shop.png")] h-[180px] mt-3 bg-cover bg-no-repeat relative bg-left'>
+      <section className='bg-[url("/images/banner/shop.png")] h-[180px] bg-cover bg-no-repeat relative bg-left'>
         <div className="absolute left-0 top-0 w-full h-full bg-[#2422228a]">
           <div className="container min-w-full mx-auto px-3 md:px-4 h-full">
             <div className="flex flex-col justify-center gap-1 items-center h-full w-full text-white">
