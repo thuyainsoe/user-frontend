@@ -153,7 +153,13 @@ const Shops = () => {
       <Header />
 
       {/* Top Banner - Reduced height */}
-      <section className="bg-gradient-to-r from-primary-500 to-primary-600 h-[160px] bg-cover bg-no-repeat relative">
+      <section
+        style={{
+          backgroundImage: `url('/images/banner/shop.png')`,
+          backgroundPosition: "center",
+        }}
+        className="bg-gradient-to-r from-primary-500 to-primary-600 h-[160px] bg-cover bg-no-repeat relative"
+      >
         <div className="absolute left-0 top-0 w-full h-full bg-black/10">
           <div className="container min-w-full h-full">
             <div className="flex flex-col justify-center gap-1 items-center h-full w-full text-white">
@@ -173,7 +179,6 @@ const Shops = () => {
       {/* Shop Section - Reduced vertical padding */}
       <section className="py-2 bg-bg-light">
         <div className="container min-w-full mx-auto">
-          {/* Added horizontal padding for mobile */}
           {/* Mobile Filter Button */}
           <div className="block md:hidden mb-2">
             <button
@@ -184,23 +189,17 @@ const Shops = () => {
             </button>
           </div>
           <div className="w-full flex flex-col md:flex-row gap-3">
-            {/* Sidebar Filter */}
-            {/* FIX: Corrected responsive width classes and padding */}
             <div
               className={`w-full md:w-4/12 lg:w-3/12 ${
                 filter ? "block mb-1 md:mb-0" : "hidden md:block"
               }`}
             >
               <div className="space-y-3">
-                {/* Added space-y to manage gaps between cards */}
-                {/* Category Card - Reduced padding */}
                 <div className="bg-white rounded-lg p-3 border border-border">
                   <h2 className="text-base mb-2 text-text-900 font-medium">
                     Categories
                   </h2>
                   <div className="space-y-1.5">
-                    {" "}
-                    {/* Reduced space between checkboxes */}
                     {mockCategories.map((c, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <input
@@ -220,7 +219,6 @@ const Shops = () => {
                     ))}
                   </div>
                 </div>
-                {/* Price Range Card - Reduced padding */}
                 <div className="bg-white rounded-lg p-3 shadow-sm border border-border">
                   <h2 className="text-base mb-3 text-text-900">Price Range</h2>
                   <Range
@@ -251,14 +249,11 @@ const Shops = () => {
                     </span>
                   </div>
                 </div>
-                {/* Rating Card - Reduced padding and gaps */}
                 <div className="bg-white rounded-lg p-3 border border-border">
                   <h2 className="text-base mb-2 text-text-900 font-medium">
                     Rating
                   </h2>
                   <div className="flex flex-col gap-2">
-                    {" "}
-                    {/* Reduced gap */}
                     {[5, 4, 3, 2, 1].map((r) => (
                       <div
                         key={r}
@@ -292,9 +287,6 @@ const Shops = () => {
                 </div>
               </div>
             </div>
-
-            {/* Product List */}
-            {/* FIX: Corrected responsive width classes, removed problematic padding */}
             <div className="w-full md:w-8/12 lg:w-9/12">
               <div className="py-3 bg-white mb-2 px-4 rounded-lg flex justify-between items-center border border-border">
                 <h2 className="text-sm text-text-900">
