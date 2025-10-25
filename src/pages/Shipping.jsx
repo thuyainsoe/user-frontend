@@ -254,7 +254,7 @@ export default function App() {
                             required
                           />
                         </div>
-                        <div className="flex items-end md:cols-span-2">
+                        <div className="flex items-end md:col-span-2">
                           <button
                             type="submit"
                             className="w-full px-3 py-2 rounded bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium transition-colors"
